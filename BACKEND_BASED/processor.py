@@ -37,43 +37,6 @@ def get_rolling_sentiment_from_transcript(transcript: str, name: str):
 
     return result_data
 
-# def process_new_meetings():
-#     '''
-#         Purpose:
-#             To automatically detect and process any new meetings that haven't been analyzed yet.
-
-#             How it works:
-
-#             Connects to the database.
-
-#             Finds meetings that have no processed transcripts.
-
-#             For each unprocessed meeting, it calls the process_meeting() function.
-
-#             Returns the results (like sentiment, skills, tasks, etc.) after processing.
-#     '''
-#     db = SessionLocal()
-#     try:
-#         unprocessed = db.query(Meeting).filter(
-#             ~exists().where(and_(
-#                 MeetingTranscript.meeting_id == Meeting.id,
-#                 MeetingTranscript.processed == True
-#             ))
-#         ).all()
-
-#         results = []
-#         for meeting in unprocessed:
-#             results.extend(process_meeting(meeting.id, db))
-#         return results
-#     except Exception as e:
-#         db.rollback()
-#         print(f"Error processing meetings: {e}")
-#         return []
-#     finally:
-#         db.close()
-
-
-
 def process_new_meetings():
     '''
     Purpose:

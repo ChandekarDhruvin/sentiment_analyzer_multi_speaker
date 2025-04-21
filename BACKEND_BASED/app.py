@@ -12,11 +12,14 @@ from utils import get_sentiment_and_recommendations
 import json
 import re
 
-app = Flask(__name__)
-
-
 from apscheduler.schedulers.background import BackgroundScheduler
 from processor import * 
+
+from transformers import pipeline
+from sentiment import * 
+
+app = Flask(__name__)
+
 def scheduled_processing():
     with app.app_context():
         process_new_meetings()
@@ -30,8 +33,6 @@ scheduler.start()
 atexit.register(lambda: scheduler.shutdown())
 
 
-from transformers import pipeline
-from sentiment import * 
 # Load sentiment analysis model
 sentiment_pipeline = pipeline("sentiment-analysis")
 

@@ -37,8 +37,6 @@ def get_rolling_sentiment_from_transcript(transcript: str, name: str):
 
     return result_data
 
-
-
 def process_new_meetings():
     '''
     Purpose:
